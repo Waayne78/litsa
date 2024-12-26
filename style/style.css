@@ -1,0 +1,392 @@
+:root {
+  --main-color: #f9b234;
+  --main-text-color: #14235e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+body {
+  background-color: whitesmoke;
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: whitesmoke;
+}
+
+header h1 {
+  color: var(--main-text-color);
+  font-size: 1.5rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin-top: 8px;
+}
+
+nav ul li {
+  margin-right: 1rem;
+}
+
+nav a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--main-text-color);
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--main-text-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: var(--main-color);
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.logo {
+  width: 220px;
+  height: 65px;
+  margin-left: 1rem;
+  cursor: pointer;
+  
+}
+
+.godmother-card {
+  margin-bottom: 50px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.godmother-card img {
+  width: 250px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.godmother-text {
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.section-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.section-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input,
+textarea {
+  width: 15rem;
+  height: 2rem;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+  border-radius: 6px;
+  border: solid 1px gray;
+  resize: none;
+}
+
+textarea {
+  height: 8rem;
+  padding-top: 0.5rem !important;
+}
+
+input[type="submit"] {
+  width: 15rem;
+  height: 2rem;
+  color: white;
+  background-color: var(--main-text-color);
+}
+
+input[type="submit"]:hover {
+  background-color: var(--main-color);
+}
+
+.signup-form,
+.login-form,
+.contact-form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--main-color);
+  color: #fff;
+  width: 350px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.contact-footer {
+  position: absolute;
+}
+
+#video-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+#video-section h1 {
+  color: #000;
+  font-size: 2.3rem;
+}
+
+video {
+  position: absolute;
+  width: 70%;
+  height: 600px;
+  border-radius: 10px;
+  top: 50px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.animal-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1rem;
+  box-sizing: border-box;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.animal-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.animal-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.animal-info {
+  padding: 1rem;
+}
+
+.animal-info h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.animal-info p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .animal-card {
+    flex: 1 1 calc(50% - 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .animal-card {
+    flex: 1 1 100%;
+  }
+}
+
+#hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: whitesmoke;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 10px;
+  flex: 1;
+  padding: 20px;
+  animation: fadeInLeft 1s ease-in-out;
+  overflow: hidden;
+  margin-left: 50px;
+}
+
+#hero h1,
+#hero h2 {
+  color: var(--main-text-color);
+  margin-bottom: 10px;
+  font-size: 2rem;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.button-wrapper {
+  margin-top: 20px;
+  animation: fadeInUp 1.2s ease-in-out;
+  overflow: hidden;
+  width: 100%;
+}
+
+.title {
+  font-family: "Dancing Script", cursive;
+}
+
+.discover-btn {
+  background-color: var(--main-text-color);
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease, padding 0.3s ease;
+  white-space: nowrap;
+}
+
+.discover-btn:hover {
+  background-color: var(--main-color);
+}
+
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+}
+
+.right img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+
+.presentation {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  background-color: whitesmoke;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.member-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.member-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.member-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.animal-info {
+  padding: 1rem;
+}
+
+.animal-info h3 {
+  font-size: 1.5rem;
+  color: var(--main-text-color);
+  margin-bottom: 0.5rem;
+}
+
+.animal-info p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2rem;
+}

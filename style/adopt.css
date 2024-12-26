@@ -1,0 +1,513 @@
+:root {
+  --main-color: #f9b234;
+  --main-text-color: #14235e;
+}
+
+@font-face {
+  font-family: "Cat";
+  src: url(../assets/fonts/meowcat.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+body {
+  background-color: whitesmoke;
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: whitesmoke;
+}
+
+header h1 {
+  color: var(--main-text-color);
+  font-size: 1.5rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin-top: 8px;
+}
+
+nav ul li {
+  margin-right: 1rem;
+}
+
+nav a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--main-text-color);
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--main-text-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: var(--main-color);
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.logo {
+  width: 220px;
+  height: 65px;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+main {
+  padding: 2rem;
+  background: #f4f4f4;
+}
+
+.adoption-section {
+  position: relative; /* Ajoute position: relative ici */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.adoption-section .title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
+}
+
+.adoption-section .message {
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.animal-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.animal-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  width: calc(33% - 2rem);
+  margin: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.animal-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.animal-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.action-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.action-buttons button:hover {
+  color: var(--main-color);
+}
+
+.animal-info {
+  padding: 1rem;
+}
+
+.animal-info h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.animal-info p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.adopt-btn {
+  background-color: #ffeb3b;
+  color: #333;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.adopt-btn:hover {
+  background-color: #f1c40f;
+  transform: translateY(-2px);
+}
+
+.add-btn {
+  position: absolute;
+  bottom: 20px; /* Ajuste la distance par rapport au bas de la section */
+  right: 20px; /* Ajuste la distance par rapport à la droite de la section */
+  width: 60px;
+  height: 60px;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+.add-btn:hover {
+  background-color: #f1c40f;
+}
+
+.popup-form {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+}
+
+.popup-content h2 {
+  margin-bottom: 1rem;
+}
+
+.popup-content label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.popup-content input[type="text"],
+.popup-content textarea,
+.popup-content input[type="file"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.popup-content button {
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.popup-content button:hover {
+  background-color: #f1c40f;
+}
+
+
+
+#adoptionForm {
+  display: none; /* Cacher par défaut */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: relative; /* Nécessaire pour le positionnement absolu de la croix */
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 80%; /* Ajuster la largeur pour une meilleure flexibilité */
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+#adoptionForm h2 {
+  font-size: 1.75rem;
+  color: var(--main-text-color);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.animal-name {
+  color: var(--main-color);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  color: var(--main-text-color);  /* Couleur du texte selon ta palette */
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 9999; /* S'assurer que la croix est au-dessus des autres éléments */
+  transition: color 0.3s ease; /* Animation au survol */
+}
+
+.close:hover {
+  color: var(--main-color);  /* Couleur d'accent au survol */
+}
+
+.close:focus {
+  outline: none;  /* Retirer le contour au focus */
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--main-text-color);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  height: 6rem;
+  resize: vertical;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--main-color);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--main-text-color);
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--main-text-color);
+}
+
+button[type="submit"]:active {
+  background-color: var(--main-text-color);
+  transform: scale(1);
+}
+
+
+/* Animation */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#adoptionForm.show {
+  display: flex;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@media (max-width: 768px) {
+  #adoptionForm .modal-content {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  #adoptionForm .modal-content {
+    width: 95%;
+  }
+}
+
+
+
+#successPopup {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#successPopup.show {
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .animal-card {
+    width: calc(50% - 2rem);
+  }
+
+  .popup-content {
+    padding: 1rem;
+  }
+
+  .popup-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .popup-content input[type="text"],
+  .popup-content textarea,
+  .popup-content input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .popup-content button {
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .popup-content button:hover {
+    background-color: #f1c40f;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .close-btn:hover {
+    color: var(--main-color);
+  }
+
+  .add-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+  }
+
+  .add-btn:hover {
+    background-color: #f1c40f;
+  }
+}
