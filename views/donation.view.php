@@ -10,11 +10,9 @@
     <link rel="stylesheet" href="../style/footer.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
 </head>
 
-<body>  
+<body>
     <?php
     include '../partials/header.php';
     ?>
@@ -36,7 +34,7 @@
                 </div>
 
             </div>
-            <form class="donation-form">
+            <form class="donation-form" action="../controllers/donation_handler.php" method="POST">
                 <h2>Formulaire de Don</h2>
                 <label>
                     <span>Nom</span>
@@ -47,11 +45,12 @@
                     <input class="input" type="email" name="email" required>
                 </label>
                 <label>
-                    <span>Montant du Don</span>
-                    <input class="input" type="number" name="amount" required>
+                    <span>Montant du Don (€)</span>
+                    <input class="input" type="number" name="amount" min="1" required>
                 </label>
                 <button class="submit" type="submit">Faire un Don</button>
             </form>
+
         </section>
     </main>
     <?php

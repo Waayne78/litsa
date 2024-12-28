@@ -10,7 +10,7 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
 }
 
 // Code secret dans l'URL
-if (!isset($_GET['key']) || $_GET['key'] !== 'admin_K9p#mX2$vL') {
+if (!isset($_GET['key']) || $_GET['key'] !== 'admin_K9pmX2vL') {
     // Si pas de code ou mauvais code, rediriger vers l'accueil
     header('Location: ../index.php');
     exit;

@@ -1,11 +1,6 @@
 <?php
-// login.php
 session_start();
-include '../config/auth.php';
-
-// Définissez vos identifiants (à mettre dans un fichier de configuration en production)
-$ADMIN_USERNAME = "admin";
-$ADMIN_PASSWORD = "123";
+include '../config/db_connect.php';
 
 $error = '';
 
@@ -13,7 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    if ($username === $ADMIN_USERNAME && $password === $ADMIN_PASSWORD) {
+    $sql = "SELECT * FROM admins WHERE username = :username";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['username' => $username]);
+    $admin = $stmt->fetch();
+
+    if ($admin && password_verify($password, $admin['password'])) {
         $_SESSION['is_admin'] = true;
         header('Location: ../views/adopt.view.php');
         exit;
