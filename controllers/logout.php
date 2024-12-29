@@ -1,5 +1,10 @@
 <?php
-session_start();
+
 session_destroy();
-header('Location: ../index.php');
+
+// Inclure le fichier constants.php pour accéder à la constante BASE_PATH
+include 'config/constants.php';
+
+// Redirection après déconnexion
+header('Location: ' . BASE_PATH . '/accueil');
 exit;

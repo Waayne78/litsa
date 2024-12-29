@@ -1,6 +1,7 @@
 <?php
-session_start();
-include '../config/db_connect.php';
+include 'config/db_connect.php';
+include 'config/constants.php';
+
 
 $error = '';
 
@@ -15,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($admin && password_verify($password, $admin['password'])) {
         $_SESSION['is_admin'] = true;
-        header('Location: ../views/adopt.view.php');
+        header('Location: ' . BASE_PATH . '/adopter');
         exit;
     } else {
         $error = 'Identifiant ou mot de passe incorrect.';
@@ -28,13 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <title>Connexion Administration</title>
-    <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../style/signup.css">
-    <link rel="stylesheet" href="../style/footer.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/signup.css">
+    <link rel="stylesheet" href="style/footer.css">
 </head>
 
 <body>
-    <?php include '../partials/header.php'; ?>
+    <?php include 'partials/header.php'; ?>
     <div class="login-form">
         <h2>Connexion Administration</h2>
         <?php if ($error): ?>
@@ -52,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit">Se connecter</button>
         </form>
     </div>
-    <?php include '../partials/footer.php'; ?>
+    <?php include 'partials/footer.php'; ?>
 </body>
 
 </html>

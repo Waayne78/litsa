@@ -24,14 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'milanemh79@gmail.com';
-        $mail->Password = 'tbvn fqjs kujd aucm'; // Remplacez par un mot de passe d'application sécurisé
+        $mail->Username = 'litsaetsesloulous@gmail.com';
+        $mail->Password = 'tbvn fqjs kujd aucm'; 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        // Envoi à l'administrateur
         $mail->setFrom($email, "$firstName $lastName");
-        $mail->addAddress('milanemh79@gmail.com', 'Admin');
+        $mail->addAddress('litsaetsesloulous@gmail.com', 'Admin');
 
         $mail->isHTML(true);
         $mail->Subject = "Formulaire de contact : $subject";
@@ -45,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $mail->send();
 
-        // Réponse pour le client
         $mail->clearAddresses();
         $mail->addAddress($email);
         $mail->Subject = "Confirmation de réception de votre message";

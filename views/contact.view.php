@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nous contacter</title>
-    <link rel="stylesheet" href="../style/contact.css">
-    <link rel="stylesheet" href="../style/header.css">
-    <link rel="stylesheet" href="../style/footer.css">
+    <link rel="stylesheet" href="style/contact.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="../script/contact.js" defer></script>
@@ -16,9 +16,9 @@
 
 <body>
 
-    <?php include '../partials/header.php'; ?>
+    <?php include 'partials/header.php'; ?>
     <main>
-        <form class="form" method="POST" action="../controllers/submit_contact.php">
+        <form class="form" method="POST" action="controllers/submit_contact.php">
             <p class="title">Contactez-nous</p>
             <p class="message">Remplissez le formulaire ci-dessous et nous vous répondrons dès que possible.</p>
             <div class="flex">
@@ -44,7 +44,7 @@
             <p class="error"><?= $error ?></p>
         <?php endif ?>
     </main>
-    <?php include '../partials/footer.php'; ?>
+    <?php include 'partials/footer.php'; ?>
 
 </body>
 

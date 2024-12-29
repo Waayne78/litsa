@@ -40,18 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare($query);
         $stmt->execute([$animalId, $adopterName, $adopterEmail, $adopterPhone, $motivation, $housing, $garden, $otherPets, $availability]);
 
-        // Envoi de l'email à l'admin
         $mail = new PHPMailer(true);
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'milanemh79@gmail.com';
+        $mail->Username = 'litsaetsesloulous@gmail.com';
         $mail->Password = 'tbvn fqjs kujd aucm';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail->setFrom('milanemh79@gmail.com', 'Milane Mehalebi');
-        $mail->addAddress('milanemh79@gmail.com', 'Admin');
+        $mail->setFrom('litsaetsesloulous@gmail.com', 'Annie Fouache');
+        $mail->addAddress('litsaetsesloulous@gmail.com', 'Admin');
         $mail->isHTML(true);
         $mail->Subject = 'Nouvelle demande d\'adoption';
         $mail->Body = "

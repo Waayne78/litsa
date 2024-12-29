@@ -57,9 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
           }?`
         )
       ) {
-        fetch(`../controllers/delete_animal.php?id=${animalId}`, {
-          method: "GET",
-        })
+        fetch(
+          `${window.location.origin}/php/cinema/appphp/E-Shop/organization/delete_animal?id=${animalId}`,
+          {
+            method: "GET",
+          }
+        )
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
@@ -153,23 +156,23 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Erreur lors de la mise à jour: " + error.message);
       });
   });
-});
 
-const adoptButtons = document.querySelectorAll(".adopt-btn");
+  // Handle adoption form button click
+  const adoptButtons = document.querySelectorAll(".adopt-btn");
 
-adoptButtons.forEach((button) => {
-  button.addEventListener("click", function () {
-    const animalId = this.closest(".animal-card").dataset.animalId;
-    const animalName =
-      this.closest(".animal-card").querySelector("h3").textContent;
-    openAdoptionForm(animalId, animalName);
+  adoptButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const animalId = this.closest(".animal-card").dataset.animalId;
+      const animalName =
+        this.closest(".animal-card").querySelector("h3").textContent;
+      openAdoptionForm(animalId, animalName);
+    });
   });
+
+  function openAdoptionForm(animalId, animalName) {
+    const form = document.getElementById("adoptionForm");
+    form.querySelector("#animal-id").value = animalId;
+    form.querySelector(".animal-name").textContent = animalName;
+    form.style.display = "block";
+  }
 });
-
-function openAdoptionForm(animalId, animalName) {
-  const form = document.getElementById("adoptionForm");
-  form.querySelector("#animal-id").value = animalId;
-  form.querySelector(".animal-name").textContent = animalName;
-  form.style.display = "block";
-}
-

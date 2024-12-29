@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adopter</title>
-    <link rel="stylesheet" href="../style/adopt.css">
-    <link rel="stylesheet" href="../style/header.css">
-    <link rel="stylesheet" href="../style/footer.css">
-    <script src="../script/adopt.js" defer></script>
+    <link rel="stylesheet" href="style/adopt.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <script src="script/adopt.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-    <?php include '../partials/header.php'; ?>
+    <?php include 'partials/header.php'; ?>
 
     <main>
         <section class="adoption-section">
@@ -21,8 +21,8 @@
             <p class="message">Découvrez nos adorables animaux prêts à trouver un nouveau foyer.</p>
             <div class="animal-grid">
                 <?php
-                include '../config/auth.php';
-                include '../config/db_connect.php';
+                include 'config/auth.php';
+                include 'config/db_connect.php';
                 $query = "SELECT * FROM animals";
                 $stmt = $pdo->query($query);
                 while ($animal = $stmt->fetch()) {
@@ -55,7 +55,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Demande d'adoption pour <span class="animal-name"></span></h2>
-            <form action="../controllers/process_adoption.php" method="POST">
+            <form action="controllers/process_adoption.php" method="POST">
                 <input type="hidden" id="animal-id" name="animal_id">
 
                 <div class="form-group">
@@ -114,7 +114,7 @@
         <div class="popup-content">
             <span class="close-btn" onclick="closePopup()">&times;</span>
             <h2>Ajouter une annonce</h2>
-            <form id="addAnimalForm" action="../controllers/add_animal.php" method="POST" enctype="multipart/form-data">
+            <form id="addAnimalForm" action="controllers/add_animal.php" method="POST" enctype="multipart/form-data">
                 <label for="animal-name">Nom de l'animal:</label>
                 <input type="text" id="animal-name" name="animal-name" required>
 
@@ -154,8 +154,8 @@
     </div>
 
 
-    <?php include '../partials/footer.php'; ?>
-    <script src="../script/app.js"></script>
+    <?php include 'partials/footer.php'; ?>
+    <script src="script/app.js"></script>
 
 </body>
 

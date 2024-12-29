@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faire un Don </title>
-    <link rel="stylesheet" href="../style/don.css">
-    <link rel="stylesheet" href="../style/header.css">
-    <link rel="stylesheet" href="../style/footer.css">
+    <link rel="stylesheet" href="style/don.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
     <?php
-    include '../partials/header.php';
+    include 'partials/header.php';
     ?>
     <main>
         <section class="donation-section">
@@ -34,7 +34,7 @@
                 </div>
 
             </div>
-            <form class="donation-form" action="../controllers/donation_handler.php" method="POST">
+            <form class="donation-form" action="controllers/donation_handler.php" method="POST">
                 <h2>Formulaire de Don</h2>
                 <label>
                     <span>Nom</span>
@@ -54,7 +54,7 @@
         </section>
     </main>
     <?php
-    include '../partials/footer.php';
+    include 'partials/footer.php';
     ?>
 </body>
 

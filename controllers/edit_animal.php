@@ -1,6 +1,6 @@
 <?php
-include '../config/db_connect.php';
-include '../config/auth.php';  // Ajoutez cette ligne
+include 'config/db_connect.php';
+include 'config/auth.php';  
 
 // Vérification de l'authentification
 if (!isAuthorized()) {
