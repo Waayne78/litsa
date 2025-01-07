@@ -1,13 +1,14 @@
 <?php
-session_start();
 include '../config/db_connect.php';
-include '../config/auth.php';  // Ajout de l'authentification
+include '../config/auth.php';
 
-// Vérification de l'authentification
 if (!isAuthorized()) {
     http_response_code(403);
     die(json_encode(['success' => false, 'error' => 'Accès non autorisé']));
 }
+
+header('Content-Type: application/json; charset=utf-8');
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['animal-name'];
@@ -19,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mkdir($uploadDir, 0777, true);
     }
 
-    // Validation de l'image uploadée
     $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
     $fileExtension = pathinfo($_FILES['animal-photo']['name'], PATHINFO_EXTENSION);
 
@@ -38,11 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Déplacement de l'image après validation
     $targetFile = $uploadDir . basename($_FILES['animal-photo']['name']);
 
     if (move_uploaded_file($_FILES['animal-photo']['tmp_name'], $targetFile)) {
-        // Insertion dans la base de données
         $stmt = $pdo->prepare("INSERT INTO animals (name, description, photo) VALUES (?, ?, ?)");
         if ($stmt->execute([$name, $description, $targetFile])) {
             echo json_encode(['success' => true]);

@@ -1,7 +1,6 @@
 document.querySelector("form").addEventListener("submit", function (e) {
-  e.preventDefault(); // Empêche le formulaire de se soumettre normalement
-
-  const formData = new FormData(this); // Récupère les données du formulaire
+  e.preventDefault();
+  const formData = new FormData(this);
 
   fetch("../controllers/submit_contact.php", {
     method: "POST",
@@ -14,7 +13,6 @@ document.querySelector("form").addEventListener("submit", function (e) {
           ".form"
         ).innerHTML = `<p class="success">${data.message}</p>`;
       } else {
-        // Si une erreur se produit, on affiche le message d'erreur
         document.querySelector(
           ".form"
         ).innerHTML = `<p class="error">${data.message}</p>`;

@@ -2,4 +2,5 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-require 'router.php';
+require 'router.php'; 
+

@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         )
       ) {
         fetch(
-          `${window.location.origin}/php/cinema/appphp/E-Shop/organization/delete_animal?id=${animalId}`,
+          `/php/cinema/appphp/E-Shop/organization/delete_animal?id=${animalId}`,
           {
             method: "GET",
           }
@@ -79,36 +79,33 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Soumission du formulaire d'ajout
-  addAnimalForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const formData = new FormData(addAnimalForm);
-
-    fetch("../controllers/add_animal.php", {
-      method: "POST",
-      body: formData,
+  fetch("/php/cinema/appphp/E-Shop/organization/add_animal", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => {
+      console.log("Raw response:", response);
+      return response.json(); 
     })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          closePopup();
+    .then((data) => {
+      if (data.success) {
+        closePopup();
+        successPopup.classList.add("show");
+        successPopup.style.display = "block";
 
-          successPopup.classList.add("show");
-          successPopup.style.display = "block";
-
-          setTimeout(function () {
-            successPopup.classList.remove("show");
-            successPopup.style.display = "none";
-            window.location.reload();
-          }, 1000);
-        } else {
-          alert("Échec de l'ajout: " + data.error);
-        }
-      })
-      .catch((error) => {
-        alert("Erreur lors de l'ajout: " + error.message);
-      });
-  });
+        setTimeout(function () {
+          successPopup.classList.remove("show");
+          successPopup.style.display = "none";
+          window.location.reload();
+        }, 1000);
+      } else {
+        alert("Échec de l'ajout: " + data.error);
+      }
+    })
+    .catch((error) => {
+      console.error("Erreur lors de l'ajout:", error);
+      alert("Erreur lors de l'ajout: " + error.message);
+    });
 
   editAnimalForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -126,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const formData = new FormData(editAnimalForm);
     formData.append("animal-id", animalId);
 
-    fetch(`../controllers/edit_animal.php`, {
+    fetch(`/php/cinema/appphp/E-Shop/organization/edit_animal`, {
       method: "POST",
       body: formData,
     })

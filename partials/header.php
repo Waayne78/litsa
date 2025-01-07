@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include_once 'config/constants.php';  // Assurez-vous que le chemin est correct ici.
+include_once 'config/constants.php';  
 ?>
 
 <header>

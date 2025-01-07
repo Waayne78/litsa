@@ -34,7 +34,7 @@
                             </div>';
                     }
 
-                    echo '<img src="../controllers/' . $animal['photo'] . '" alt="' . $animal['name'] . '">
+                    echo '<img src="controllers/' . $animal['photo'] . '" alt="' . $animal['name'] . '">
                         <div class="animal-info">
                             <h3>' . $animal['name'] . '</h3>
                             <p>Description : ' . $animal['description'] . '</p>

@@ -1,12 +1,18 @@
+<?php
+
+include_once 'config/constants.php';
+
+?>
+
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-section">
             <h3>Liens Rapides</h3>
             <ul class="footer-links">
-                <li><a href="../index.php">Accueil</a></li>
-                <li><a href="adopt.view.php">Adopter</a></li>
-                <li><a href="views/contact.view.php">Contact</a></li>
-                <li><a href="help.view.php">Nous Aider</a></li>
+                <li><a href="<?= BASE_PATH ?>/accueil">Accueil</a></li>
+                <li><a href="<?= BASE_PATH ?>/adopter">Adopter</a></li>
+                <li><a href="<?= BASE_PATH ?>/contact">Contact</a></li>
+                <li><a href="<?= BASE_PATH ?>/nous-aider">Nous Aider</a></li>
             </ul>
         </div>
         <div class="footer-section">

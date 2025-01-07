@@ -10,7 +10,7 @@ if ($uri === '' || $uri === '/') {
 }
 
 $routes = [
-    '/accueil' => 'views/index.view.php',  
+    '/accueil' => 'views/index.view.php',
     '/adopter' => 'views/adopt.view.php',
     '/contact' => 'views/contact.view.php',
     '/nous-aider' => 'views/donation.view.php',
@@ -18,6 +18,7 @@ $routes = [
     '/logout' => 'controllers/logout.php',
     '/delete_animal' => 'controllers/delete_animal.php',
     '/add_animal' => 'controllers/add_animal.php',
+    '/edit_animal' => 'controllers/edit_animal.php',
     '/process_adoption' => 'controllers/process_adoption.php',
     '/process_donation' => 'controllers/donation_handler.php',
 
