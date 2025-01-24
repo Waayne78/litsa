@@ -1,14 +1,14 @@
 <?php
-include '../config/db_connect.php';
-include '../config/auth.php';
+include 'config/db_connect.php';
+include 'config/auth.php';
 
-// Vérification de l'authentification
+header ('Content-Type: application/json; charset=utf-8');
+
 if (!isAuthorized()) {
     http_response_code(403);
     die('Accès non autorisé');
 }
 
-// Ensuite votre code existant
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $animalId = $_POST['animal-id'];
     $name = $_POST['edit-animal-name'];
@@ -27,4 +27,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     echo json_encode(['success' => $success]);
 }
-?>

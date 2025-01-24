@@ -124,58 +124,6 @@ nav a:hover::after {
   margin-bottom: 1rem;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-form input,
-textarea {
-  width: 15rem;
-  height: 2rem;
-  margin-top: 0.5rem;
-  padding-left: 0.5rem;
-  border-radius: 6px;
-  border: solid 1px gray;
-  resize: none;
-}
-
-textarea {
-  height: 8rem;
-  padding-top: 0.5rem !important;
-}
-
-input[type="submit"] {
-  width: 15rem;
-  height: 2rem;
-  color: white;
-  background-color: var(--main-text-color);
-}
-
-input[type="submit"]:hover {
-  background-color: var(--main-color);
-}
-
-.signup-form,
-.login-form,
-.contact-form {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid black;
-  padding: 1rem;
-  border-radius: 10px;
-  background-color: var(--main-color);
-  color: #fff;
-  width: 350px;
-  margin: 0 auto;
-  margin-top: 2rem;
-}
-
-.contact-footer {
-  position: absolute;
-}
 
 #video-section {
   position: relative;
@@ -253,7 +201,6 @@ video {
     flex: 1 1 100%;
   }
 }
-
 #hero {
   display: flex;
   align-items: center;
@@ -264,8 +211,8 @@ video {
   height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
+  flex-wrap: wrap; /* Permet aux éléments de se replier sur les petits écrans */
 }
-
 .left {
   display: flex;
   flex-direction: column;
@@ -328,7 +275,6 @@ video {
   border-radius: 10px;
 }
 
-
 .presentation {
   display: flex;
   text-align: center;
@@ -389,4 +335,175 @@ video {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 2rem;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute; 
+  top: 20px; 
+  left: 20px; 
+}
+
+.menu-toggle span {
+  background-color: var(--main-text-color);
+  height: 4px;
+  width: 30px;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+
+#menu.active {
+  display: flex;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg);
+  position: relative;
+  top: 8px;
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  position: relative;
+  top: -8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 80px;
+      left: 0;
+      background-color: white;
+      width: 100%;
+      padding: 1rem;
+      border-top: 2px solid var(--main-color);
+      z-index: 1; 
+  }
+
+  .logo {
+    height: auto; /* Laisse la hauteur ajuster automatiquement */
+    width: 170px; /* Ajuste la largeur à une taille appropriée pour l'écran */
+  }
+
+
+  nav ul.active {
+      display: flex;
+  }
+
+  nav ul li {
+      margin-right: 0;
+      padding: 10px 0;
+  }
+
+  .menu-toggle {
+      display: flex;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg);
+      position: relative;
+      top: 8px;
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg);
+      position: relative;
+      top: -8px;
+  }
+
+  #hero {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .right {
+    display: none; /* Cache l'image sur les petits écrans */
+  }
+
+  .left {
+    width: 100%; /* Chaque section prend toute la largeur */
+    margin: 0;
+    text-align: center; /* Centre le contenu pour les petits écrans */
+  }
+
+  #hero h1,
+  #hero h2 {
+    font-size: 1.5rem; /* Réduit la taille du texte pour les petits écrans */
+    margin-bottom: 10px;
+  }
+
+  .button-wrapper {
+    margin-top: 10px;
+  }
+
+  .right img {
+    width: 80%; /* Réduit la taille de l'image pour qu'elle ne prenne pas trop de place */
+  }
+
+  #hero .title {
+      font-size: 2.5rem;
+      text-align: center;
+  }
+
+  #hero h2 {
+      font-size: 1.5rem;
+      text-align: center;
+  }
+
+  #video {
+      margin-top: 70px;    
+  }
+
+  #video-section   h1 {
+      font-size: 1.5rem;
+      text-align: center;
+  }
+
+  .articles {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .member-card {
+      width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  header .logo {
+      max-height: 40px;
+  }
+
+  #hero h1,
+  #hero h2 {
+    font-size: 1.2rem; /* Taille encore plus petite pour les très petits écrans */
+  }
+
+  .left {
+    padding: 15px;
+  }
+
+  .right img {
+    width: 100%; /* L'image prend 100% de la largeur sur les très petits écrans */
+  }
 }

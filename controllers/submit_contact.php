@@ -5,29 +5,27 @@ use PHPMailer\PHPMailer\Exception;
 require '../vendor/autoload.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer et valider les données
     $firstName = htmlspecialchars(trim($_POST['first_name']));
     $lastName = htmlspecialchars(trim($_POST['last_name']));
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
     $subject = htmlspecialchars(trim($_POST['subject']));
     $message = htmlspecialchars(trim($_POST['message']));
 
-    // Vérifications
     if (empty($firstName) || empty($lastName) || !$email || empty($subject) || empty($message)) {
         echo json_encode(['success' => false, 'message' => 'Tous les champs sont obligatoires.']);
         exit;
-    }
+    }   
 
     try {
-        // Configuration de PHPMailer
         $mail = new PHPMailer(true);
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'litsaetsesloulous@gmail.com';
-        $mail->Password = 'tbvn fqjs kujd aucm'; 
+        $mail->Password = 'tmtv tslp ugkp awov';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
+
 
         $mail->setFrom($email, "$firstName $lastName");
         $mail->addAddress('litsaetsesloulous@gmail.com', 'Admin');

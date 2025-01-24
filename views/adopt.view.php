@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="style/adopt.css">
     <link rel="stylesheet" href="style/header.css">
     <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/style.css">
     <script src="script/adopt.js" defer></script>
+    <script src="script/app.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -34,7 +36,7 @@
                             </div>';
                     }
 
-                    echo '<img src="controllers/' . $animal['photo'] . '" alt="' . $animal['name'] . '">
+                    echo '<img src="' . $animal['photo'] . '" alt="' . $animal['name'] . '">
                         <div class="animal-info">
                             <h3>' . $animal['name'] . '</h3>
                             <p>Description : ' . $animal['description'] . '</p>
@@ -155,7 +157,6 @@
 
 
     <?php include 'partials/footer.php'; ?>
-    <script src="script/app.js"></script>
 
 </body>
 

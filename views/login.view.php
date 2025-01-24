@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/signup.css">
     <link rel="stylesheet" href="style/footer.css">
+    
 </head>
 
 <body>

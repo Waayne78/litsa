@@ -1,10 +1,10 @@
 <?php
 header('Content-Type: application/json');
-include '../config/db_connect.php';
+include 'config/db_connect.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adopterName = htmlspecialchars(trim($_POST['adopter_name'] ?? ''));
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'litsaetsesloulous@gmail.com';
-        $mail->Password = 'tbvn fqjs kujd aucm';
+        $mail->Password = 'tmtv tslp ugkp awov';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
@@ -81,7 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->Body = nl2br($clientMessage);
         $mail->send();
 
-        // Retour de la réponse JSON
         echo json_encode(['success' => true, 'message' => 'Votre demande a été envoyée avec succès.']);
     } catch (Exception $e) {
         error_log($e->getMessage());

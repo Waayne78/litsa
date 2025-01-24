@@ -1,14 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   const popup = document.getElementById("popupForm");
   const editPopup = document.getElementById("editPopupForm");
-  const addBtn = document.querySelector(".add-btn");
-  const closeBtn = document.querySelector(".close-btn");
-  const closeEditBtn = document.querySelector(".close-edit-btn");
   const addAnimalForm = document.getElementById("addAnimalForm");
   const editAnimalForm = document.getElementById("editAnimalForm");
   const animalGrid = document.querySelector(".animal-grid");
   const successPopup = document.getElementById("successPopup");
   let currentEditingCard = null;
+  const formData = new FormData(document.querySelector("form"));
 
   window.openPopup = function () {
     popup.style.display = "flex";
@@ -78,33 +76,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Soumission du formulaire d'ajout
-  fetch("/php/cinema/appphp/E-Shop/organization/add_animal", {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => {
-      console.log("Raw response:", response);
-      return response.json(); 
-    })
-    .then((data) => {
-      if (data.success) {
-        closePopup();
-        successPopup.classList.add("show");
-        successPopup.style.display = "block";
+  // Fonction de soumission du formulaire d'ajout d'animal
+  document
+    .getElementById("addAnimalForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault(); // Empêche la soumission automatique du formulaire
 
-        setTimeout(function () {
-          successPopup.classList.remove("show");
-          successPopup.style.display = "none";
-          window.location.reload();
-        }, 1000);
-      } else {
-        alert("Échec de l'ajout: " + data.error);
-      }
-    })
-    .catch((error) => {
-      console.error("Erreur lors de l'ajout:", error);
-      alert("Erreur lors de l'ajout: " + error.message);
+      const formData = new FormData(this);
+      fetch("/php/cinema/appphp/E-Shop/organization/add_animal", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            closePopup();
+            successPopup.classList.add("show");
+            successPopup.style.display = "block";
+            setTimeout(function () {
+              successPopup.classList.remove("show");
+              successPopup.style.display = "none";
+              window.location.reload();
+            }, 1000);
+          } else {
+            alert("Échec de l'ajout: " + data.error);
+          }
+        })
+        .catch((error) => {
+          console.error("Erreur lors de l'ajout:", error);
+          alert("Erreur lors de l'ajout: " + error.message);
+        });
     });
 
   editAnimalForm.addEventListener("submit", function (event) {
@@ -154,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
-  // Handle adoption form button click
   const adoptButtons = document.querySelectorAll(".adopt-btn");
 
   adoptButtons.forEach((button) => {
