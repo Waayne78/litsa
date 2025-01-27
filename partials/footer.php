@@ -12,7 +12,7 @@ include_once 'config/constants.php';
                 <li><a href="<?= BASE_PATH ?>/accueil">Accueil</a></li>
                 <li><a href="<?= BASE_PATH ?>/adopter">Adopter</a></li>
                 <li><a href="<?= BASE_PATH ?>/contact">Contact</a></li>
-                <li><a href="<?= BASE_PATH ?>/nous-aider">Nous Aider</a></li>
+                <!-- <li><a href="<?= BASE_PATH ?>/nous-aider">Nous Aider</a></li> -->
             </ul>
         </div>
         <div class="footer-section">
@@ -60,7 +60,7 @@ include_once 'config/constants.php';
     </div>
     <div class="footer-animated-bg"></div>
     <div class="footer-animated-bg"></div>
-    <p class="footer-text">Copyright © 2024 Litsa et ses loulous. Tous droits réservés.</p>
+    <p class="footer-text">Copyright © 2025 Litsa et ses loulous. Tous droits réservés.</p>
 </footer>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

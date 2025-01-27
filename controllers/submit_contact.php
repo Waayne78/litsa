@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($firstName) || empty($lastName) || !$email || empty($subject) || empty($message)) {
         echo json_encode(['success' => false, 'message' => 'Tous les champs sont obligatoires.']);
         exit;
-    }   
+    }
 
     try {
         $mail = new PHPMailer(true);

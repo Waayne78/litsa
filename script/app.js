@@ -76,11 +76,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Fonction de soumission du formulaire d'ajout d'animal
   document
     .getElementById("addAnimalForm")
     .addEventListener("submit", function (event) {
-      event.preventDefault(); // Empêche la soumission automatique du formulaire
+      event.preventDefault();
 
       const formData = new FormData(this);
       fetch("/php/cinema/appphp/E-Shop/organization/add_animal", {
