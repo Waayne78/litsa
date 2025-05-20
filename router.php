@@ -2,7 +2,7 @@
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-$basePath = '/php/cinema/appphp/E-Shop/organization';
+$basePath = '';
 $uri = str_replace($basePath, '', $uri);
 
 if ($uri === '' || $uri === '/') {
